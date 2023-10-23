@@ -1,3 +1,4 @@
+import NumberLabel from './components/numberLabel';
 import './style.css'
 // import typescriptLogo from './typescript.svg'
 // import viteLogo from '/vite.svg'
@@ -63,6 +64,10 @@ app.ticker.add((delta) => {
   sprite.x = 100.0 + Math.cos(elapsed/50.0) * 100.0;
 });*/
 
+NumberLabel.defineCustomElement('number-label');
+
+document.querySelector<HTMLDivElement>('#app')!.innerHTML = `<number-label id="freds" value="28" />`;
+
 let start: number = -1;
 let previousTimestamp: DOMHighResTimeStamp = 0;
 
@@ -94,7 +99,10 @@ const step = (timeStamp: DOMHighResTimeStamp) => {
     // console.log(`previouslyUpdated=${previouslyUpdated}`);
     //console.log(`value % 5=${value % 5}`);
 
-    document.querySelector<HTMLDivElement>('#app')!.innerText = Math.min(value, limit).toFixed(2);
+    //document.querySelector<HTMLDivElement>('#app')!.innerText = Math.min(value, limit).toFixed(2);
+    console.log('fred', document.querySelector<HTMLDivElement>('#freds'));
+    // document.querySelector<NumberLabel>('#freds')?.setAttribute('value', Math.min(value, limit).toFixed(2));
+    document.querySelector<NumberLabel>('#freds')?.setAttribute('value', 'fred');
 
     if (!previouslyUpdated && value % 5 < 1) {
       previouslyUpdated = true;
@@ -103,7 +111,7 @@ const step = (timeStamp: DOMHighResTimeStamp) => {
 
     if (value < limit) {
       previousTimestamp = timeStamp;
-      window.requestAnimationFrame(step);
+      // window.requestAnimationFrame(step);
     }
   }
 }
