@@ -83,6 +83,7 @@ const step = (timeStamp: DOMHighResTimeStamp) => {
   if (start === -1) {
     start = timeStamp;
   }
+  
   const elapsed = timeStamp - start;
   const delta = timeStamp - previousTimestamp;
 
@@ -101,7 +102,7 @@ const step = (timeStamp: DOMHighResTimeStamp) => {
 
     //document.querySelector<HTMLDivElement>('#app')!.innerText = Math.min(value, limit).toFixed(2);
     console.log('fred', document.querySelector<HTMLDivElement>('#freds'));
-    // document.querySelector<NumberLabel>('#freds')?.setAttribute('value', Math.min(value, limit).toFixed(2));
+    //document.querySelector<NumberLabel>('#freds')?.setAttribute('value', Math.min(value, limit).toFixed(2));
     document.querySelector<NumberLabel>('#freds')?.setAttribute('value', 'fred');
 
     if (!previouslyUpdated && value % 5 < 1) {

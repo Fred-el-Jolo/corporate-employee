@@ -1,24 +1,23 @@
 import DynamicHtmlElement from "../core/dynamic-html-element.ts";
-import {html} from 'lit-html';
+const html = DynamicHtmlElement.html; 
 
 export default class NumberLabel extends DynamicHtmlElement {
 
-    static get observedAttributes() {
-        return ['value'];
-    }
+  static get observedAttributes() {
+    return ['value'];
+  }
 
-    value: string;
-    #spanNode: HTMLSpanElement | null | undefined;
+  value: string;
 
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        console.log('Number label constructor');
+    console.log('Number label constructor');
 
-        this.initShadowDom();
+    this.initShadowDom();
 
-        this.template = () => html`<span>${this.value}</span>`;
+    this.template = () => html`<span>${this.value}</span>`;
 
-        this.value = '';
-    }
+    this.value = '';
+  }
 }
